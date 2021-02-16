@@ -8,7 +8,7 @@ const io = require('socket.io')(server)
 io.sockets.on('connection', (socket) => {
   console.log(`Socket connected : ${socket.id}`)
 
-  socket.on('subscribe', (data) => {
+  socket.on('enter', (data) => {
     const roomData = JSON.parse(data)
     const username = roomData.username
     const roomNumber = roomData.roomNumber
@@ -16,14 +16,14 @@ io.sockets.on('connection', (socket) => {
     socket.join(`${roomNumber}`)
     console.log(`[Username : ${username}] entered [room number : ${roomNumber}]`)
     
-    const subData = {
+    const enterData = {
       type : "ENTER",
       content : `${username} entered the room`  
     }
-    socket.broadcast.to(`${roomNumber}`).emit('update', JSON.stringify(subData))
+    socket.broadcast.to(`${roomNumber}`).emit('update', JSON.stringify(enterData))
   })
 
-  socket.on('unsubscribe', (data) => {
+  socket.on('left', (data) => {
     const roomData = JSON.parse(data)
     const username = roomData.username
     const roomNumber = roomData.roomNumber
@@ -31,11 +31,11 @@ io.sockets.on('connection', (socket) => {
     socket.leave(`${roomNumber}`)
     console.log(`[Username : ${username}] left [room number : ${roomNumber}]`)
 
-    const unsubData = {
+    const leftData = {
       type : "LEFT",
       content : `${username} left the room`  
     }
-    socket.broadcast.to(`${roomNumber}`).emit('update', JSON.stringify(unsubData))
+    socket.broadcast.to(`${roomNumber}`).emit('update', JSON.stringify(leftData))
   })
 
   socket.on('newMessage', (data) => {

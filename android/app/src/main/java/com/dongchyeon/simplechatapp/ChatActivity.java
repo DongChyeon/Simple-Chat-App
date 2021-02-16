@@ -60,10 +60,11 @@ public class ChatActivity extends AppCompatActivity {
 
         mSocket.connect();
 
-        mSocket.on(Socket.EVENT_CONNECT, args -> mSocket.emit("subscribe", gson.toJson(new RoomData(username, roomNumber))));
-        mSocket.on("update", (Emitter.Listener) args -> {
+        mSocket.on(Socket.EVENT_CONNECT, args -> {
+            mSocket.emit("enter", gson.toJson(new RoomData(username, roomNumber)));
+        });
+        mSocket.on("update", args -> {
             MessageData data = gson.fromJson(args[0].toString(), MessageData.class);
-            Log.d("UPDATE", data.toString());
             addChat(data);
         });
     }
@@ -107,7 +108,7 @@ public class ChatActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mSocket.emit("unsubscribe", gson.toJson(new RoomData(username, roomNumber)));
+        mSocket.emit("left", gson.toJson(new RoomData(username, roomNumber)));
         mSocket.disconnect();
     }
 }

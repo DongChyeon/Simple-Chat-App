@@ -34,15 +34,4 @@ public class MessageData {
     public long getSendTime() { return sendTime; }
 
     public void setSendTime(long sendTime) { this.sendTime = sendTime; }
-
-    @Override
-    public String toString() {
-        return "MessageData{" +
-                "type='" + type + '\'' +
-                ", from='" + from + '\'' +
-                ", to='" + to + '\'' +
-                ", content='" + content + '\'' +
-                ", sendTime=" + sendTime +
-                '}';
-    }
 }
