@@ -28,14 +28,27 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
+        <ImageButton
+            android:id="@+id/image_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_gallery_button" />
+
         <EditText
             android:id="@+id/content_edit"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="44dp"
             android:layout_alignWithParentIfMissing="false"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="16dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
             android:layout_marginRight="16dp"
+            android:layout_marginBottom="8dp"
+            android:layout_toRightOf="@+id/image_btn"
             android:background="@drawable/ic_chat_input_box"
             android:hint="내용을 입력하세요."
             android:paddingLeft="16dp"
@@ -49,17 +62,17 @@
         <Button
             android:id="@+id/send_btn"
             android:layout_width="64dp"
-            android:layout_height="34dp"
+            android:layout_height="40dp"
             android:layout_alignParentLeft="false"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="16dp"
+            android:layout_centerVertical="true"
             android:layout_marginEnd="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginBottom="16dp"
             android:background="@drawable/ic_send_button"
             android:text="전송"
             android:textColor="@color/white"
-            android:textSize="11sp" />
+            android:textSize="14sp" />
+
     </RelativeLayout>
 
 
