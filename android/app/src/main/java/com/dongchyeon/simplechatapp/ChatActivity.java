@@ -143,7 +143,7 @@ public class ChatActivity extends AppCompatActivity {
     // Node.js 서버에 이미지를 업로드
     public void uploadImage(Uri imageUri, Context context) {
         File image = new File(getRealPathFromURI(imageUri, context));
-        RequestBody requestBody = RequestBody.create(MediaType.parse("image/jpg"), image);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), image);
 
         MultipartBody.Part body = MultipartBody.Part.createFormData("image", image.getName(), requestBody);
 
