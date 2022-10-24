@@ -20,7 +20,7 @@ import com.dongchyeon.simplechatapp.data.model.ChatData
 import java.text.SimpleDateFormat
 import java.util.*
 
-class MessageAdapter(private val context: Context) :
+class ChatAdapter(private val context: Context) :
     ListAdapter<ChatData, RecyclerView.ViewHolder>(MessageComparator()) {
 
     companion object ChatType {

@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dongchyeon.simplechatapp.adapter.MessageAdapter
+import com.dongchyeon.simplechatapp.adapter.ChatAdapter
 import com.dongchyeon.simplechatapp.databinding.ActivityChatBinding
 import com.dongchyeon.simplechatapp.util.TakePictureFromCameraOrGallery
 import com.dongchyeon.simplechatapp.viewmodel.ChatViewModel
@@ -31,7 +31,7 @@ class ChatActivity : AppCompatActivity() {
     }
 
     private fun init() {
-        val adapter = MessageAdapter(applicationContext)
+        val adapter = ChatAdapter(applicationContext)
 
         chatViewModel.chatData.observe(this@ChatActivity) { data ->
             data.let {

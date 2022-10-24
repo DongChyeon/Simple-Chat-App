@@ -70,15 +70,26 @@ class ChatViewModel @Inject constructor(
             val body = MultipartBody.Part.createFormData("image", image.name, requestFile)
 
             val result = repository.uploadImage(body).body()
-            val chat = ChatData(
-                "IMAGE",
-                userName,
-                roomName,
-                result!!.imageUri,
-                System.currentTimeMillis()
+            socket.emit(
+                "newImage", gson.toJson(
+                    ChatData(
+                        "IMAGE",
+                        userName,
+                        roomName,
+                        result!!.imageUri,
+                        System.currentTimeMillis()
+                    )
+                )
             )
-            socket.emit("newImage", gson.toJson(chat))
-            addChat(chat)
+            addChat(
+                ChatData(
+                    "IMAGE",
+                    userName,
+                    roomName,
+                    imagePath,
+                    System.currentTimeMillis()
+                )
+            )
         }
     }
 
