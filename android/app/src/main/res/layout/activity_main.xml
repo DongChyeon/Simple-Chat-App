@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ui.MainActivity">
 
     <TextView
         android:id="@+id/logo"
@@ -34,20 +34,22 @@
             android:layout_width="296dp"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Username"
+            android:hint="유저 이름"
             android:inputType="textEmailAddress"
             android:padding="16dp"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:textStyle="normal" />
 
         <EditText
             android:id="@+id/room_edit"
             android:layout_width="296dp"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Room number"
-            android:inputType="numberSigned"
+            android:hint="방 이름"
+            android:inputType="text"
             android:padding="16dp"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:textStyle="normal" />
     </LinearLayout>
 
     <Button
@@ -57,6 +59,7 @@
         android:layout_marginTop="32dp"
         android:text="입장"
         android:textSize="18sp"
+        android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />

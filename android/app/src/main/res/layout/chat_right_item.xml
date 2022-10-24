@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
@@ -12,7 +11,7 @@
         android:id="@+id/msg_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/ic_chat_right_item"
         android:paddingLeft="16dp"
         android:paddingTop="4dp"
@@ -21,6 +20,7 @@
         android:text="내가 보낸 메세지"
         android:textColor="@color/white"
         android:textSize="12sp"
+        android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,11 +28,11 @@
         android:id="@+id/send_time_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginEnd="8dp"
         android:text="00:00"
-        android:textColor="#b9bcce"
+        android:textColor="@color/gray"
         android:textSize="10sp"
-        app:layout_constraintEnd_toStartOf="@+id/msg_text"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/msg_text" />
 </androidx.constraintlayout.widget.ConstraintLayout>

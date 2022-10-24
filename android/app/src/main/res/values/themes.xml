@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Theme.SimpleChatApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
@@ -10,7 +10,38 @@
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:textViewStyle">@style/textViewFontStyle</item>
+        <item name="buttonStyle">@style/buttonFontStyle</item>
+        <item name="editTextStyle">@style/editTextStyle</item>
+        <item name="radioButtonStyle">@style/radioButtonFontStyle</item>
+        <item name="checkboxStyle">@style/checkboxFontStyle</item>
+    </style>
+    <!-- Custom font 적용 -->
+    <style name="textViewFontStyle" parent="@android:style/Widget.DeviceDefault.TextView">
+        <item name="android:fontFamily">@font/notosanskr_font_family</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="buttonFontStyle" parent="@android:style/Widget.DeviceDefault.Button.Borderless">
+        <item name="android:fontFamily">@font/notosanskr_font_family</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="editTextStyle" parent="@android:style/Widget.DeviceDefault.EditText">
+        <item name="android:fontFamily">@font/notosanskr_font_family</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="radioButtonFontStyle" parent="@android:style/Widget.DeviceDefault.CompoundButton.RadioButton">
+        <item name="android:fontFamily">@font/notosanskr_font_family</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="checkboxFontStyle" parent="@android:style/Widget.DeviceDefault.CompoundButton.CheckBox">
+        <item name="android:fontFamily">@font/notosanskr_font_family</item>
+        <item name="android:includeFontPadding">false</item>
     </style>
 </resources>

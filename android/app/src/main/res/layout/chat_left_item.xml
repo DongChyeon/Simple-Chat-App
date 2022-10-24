@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
@@ -12,10 +11,11 @@
         android:id="@+id/name_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
         android:text="이름"
         android:textColor="@color/black"
         android:textSize="12sp"
+        android:textStyle="normal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,7 +23,7 @@
         android:id="@+id/msg_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="4dp"
         android:background="@drawable/ic_chat_left_item"
         android:paddingLeft="16dp"
@@ -31,8 +31,9 @@
         android:paddingRight="16dp"
         android:paddingBottom="4dp"
         android:text="상대방이 보낸 메세지"
-        android:textColor="#333d4b"
+        android:textColor="@color/dark_gray"
         android:textSize="12sp"
+        android:textStyle="normal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name_text" />
 
@@ -40,12 +41,12 @@
         android:id="@+id/send_time_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp"
         android:text="00:00"
-        android:textColor="#b9bcce"
+        android:textColor="@color/gray"
         android:textSize="10sp"
-        app:layout_constraintStart_toEndOf="@+id/msg_text"
-        app:layout_constraintTop_toBottomOf="@+id/name_text" />
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/msg_text" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

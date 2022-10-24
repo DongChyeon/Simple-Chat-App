@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:android="http://schemas.android.com/apk/res/android">
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        android:font="@font/notosanskr_regular" />
+    <!-- Bold체를 지원하지 않아서 임의로 Weight를 700으로 줘서 구현 -->
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="700"
+        android:font="@font/notosanskr_bold" />
+</font-family>
