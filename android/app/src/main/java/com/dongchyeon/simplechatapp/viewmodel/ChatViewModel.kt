@@ -5,13 +5,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dongchyeon.simplechatapp.SimpleChatApp.Companion.roomName
+import com.dongchyeon.simplechatapp.SimpleChatApp.Companion.socket
 import com.dongchyeon.simplechatapp.SimpleChatApp.Companion.userName
 import com.dongchyeon.simplechatapp.data.model.ChatData
 import com.dongchyeon.simplechatapp.data.model.RoomData
 import com.dongchyeon.simplechatapp.data.repository.NetworkRepository
 import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.socket.client.Socket
+import io.socket.emitter.Emitter
 import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -22,29 +23,24 @@ import javax.inject.Inject
 @HiltViewModel
 class ChatViewModel @Inject constructor(
     private val repository: NetworkRepository,
-    private val socket: Socket,
 ) : ViewModel() {
     private val chatList = mutableListOf<ChatData>()
     private val _chatData = MutableLiveData<List<ChatData>>()
     val chatData: LiveData<List<ChatData>> = _chatData
 
     private val gson = Gson()
+    private val updateChat = Emitter.Listener { args ->
+        val chat = gson.fromJson(args[0].toString(), ChatData::class.java)
+        addChat(chat)
+    }
 
     init {
         _chatData.value = chatList
 
-        socket.on(Socket.EVENT_CONNECT) {
-            socket.emit(
-                "enter",
-                gson.toJson(RoomData(userName, roomName))
-            )
-        }.on("update") { args: Array<Any> ->
-            val chat = gson.fromJson(args[0].toString(), ChatData::class.java)
-            addChat(chat)
-        }
-
-        socket.connect()
+        socket.on("update", updateChat)
+        socket.emit("enter", gson.toJson(RoomData(userName, roomName)))
     }
+
 
     private fun addChat(chat: ChatData) {
         chatList.add(chat)
@@ -71,7 +67,8 @@ class ChatViewModel @Inject constructor(
 
             val result = repository.uploadImage(body).body()
             socket.emit(
-                "newImage", gson.toJson(
+                "newImage",
+                gson.toJson(
                     ChatData(
                         "IMAGE",
                         userName,
@@ -81,21 +78,20 @@ class ChatViewModel @Inject constructor(
                     )
                 )
             )
-            addChat(
-                ChatData(
-                    "IMAGE",
-                    userName,
-                    roomName,
-                    imagePath,
-                    System.currentTimeMillis()
-                )
-            )
         }
+        addChat(
+            ChatData(
+                "IMAGE",
+                userName,
+                roomName,
+                imagePath,
+                System.currentTimeMillis()
+            )
+        )
     }
 
     override fun onCleared() {
         super.onCleared()
         socket.emit("left", gson.toJson(RoomData(userName, roomName)))
-        socket.disconnect()
     }
 }
