@@ -1,10 +1,10 @@
-package com.dongchyeon.simplechatapp.data.repository
+package com.dongchyeon.simplechatapp.data.datasource
 
 import com.dongchyeon.simplechatapp.data.model.Image
 import okhttp3.MultipartBody
 import retrofit2.Response
 
-interface NetworkRepository {
+interface NetworkDataSource {
 
     suspend fun uploadImage(image: MultipartBody.Part): Response<Image>
 

@@ -1,4 +1,4 @@
-package com.dongchyeon.simplechatapp.util
+package com.dongchyeon.simplechatapp.presentation.util
 
 import android.app.Activity
 import android.content.Context
@@ -12,7 +12,7 @@ import androidx.activity.result.contract.ActivityResultContract
 import androidx.annotation.RequiresApi
 import androidx.core.content.FileProvider
 import com.dongchyeon.simplechatapp.BuildConfig
-import com.dongchyeon.simplechatapp.util.RealPathUtil.getRealPathFromURI_API19
+import com.dongchyeon.simplechatapp.presentation.util.RealPathUtil.getRealPathFromURI_API19
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*

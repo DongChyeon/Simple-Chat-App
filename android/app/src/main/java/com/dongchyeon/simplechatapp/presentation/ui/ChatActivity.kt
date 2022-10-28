@@ -1,13 +1,13 @@
-package com.dongchyeon.simplechatapp.ui
+package com.dongchyeon.simplechatapp.presentation.ui
 
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dongchyeon.simplechatapp.adapter.ChatAdapter
 import com.dongchyeon.simplechatapp.databinding.ActivityChatBinding
-import com.dongchyeon.simplechatapp.util.TakePictureFromCameraOrGallery
-import com.dongchyeon.simplechatapp.viewmodel.ChatViewModel
+import com.dongchyeon.simplechatapp.presentation.adapter.ChatAdapter
+import com.dongchyeon.simplechatapp.presentation.util.TakePictureFromCameraOrGallery
+import com.dongchyeon.simplechatapp.presentation.viewmodel.ChatViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -33,7 +33,7 @@ class ChatActivity : AppCompatActivity() {
     private fun init() {
         val adapter = ChatAdapter(applicationContext)
 
-        chatViewModel.chatData.observe(this@ChatActivity) { data ->
+        chatViewModel.chat.observe(this@ChatActivity) { data ->
             data.let {
                 adapter.submitList(data)
                 binding.recyclerView.scrollToPosition(adapter.itemCount - 1)

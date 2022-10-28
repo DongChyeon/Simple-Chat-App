@@ -1,4 +1,4 @@
-package com.dongchyeon.simplechatapp.adapter
+package com.dongchyeon.simplechatapp.presentation.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -15,13 +15,13 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.dongchyeon.simplechatapp.R
-import com.dongchyeon.simplechatapp.SimpleChatApp.Companion.userName
-import com.dongchyeon.simplechatapp.data.model.ChatData
+import com.dongchyeon.simplechatapp.data.model.Chat
+import com.dongchyeon.simplechatapp.presentation.SimpleChatApp.Companion.userName
 import java.text.SimpleDateFormat
 import java.util.*
 
 class ChatAdapter(private val context: Context) :
-    ListAdapter<ChatData, RecyclerView.ViewHolder>(MessageComparator()) {
+    ListAdapter<Chat, RecyclerView.ViewHolder>(MessageComparator()) {
 
     companion object ChatType {
         const val LEFT_MESSAGE = 0
@@ -80,7 +80,7 @@ class ChatAdapter(private val context: Context) :
             }
         }
 
-        fun bind(item: ChatData) {
+        fun bind(item: Chat) {
             contentText.text = item.content
         }
     }
@@ -98,7 +98,7 @@ class ChatAdapter(private val context: Context) :
             }
         }
 
-        fun bind(item: ChatData) {
+        fun bind(item: Chat) {
             nameText.text = item.from
             contentText.text = item.content
             sendTimeText.text =
@@ -118,7 +118,7 @@ class ChatAdapter(private val context: Context) :
             }
         }
 
-        fun bind(item: ChatData) {
+        fun bind(item: Chat) {
             contentText.text = item.content
             sendTimeText.text =
                 SimpleDateFormat("hh:mm a", Locale.KOREA).format(Date(item.sendTime))
@@ -138,7 +138,7 @@ class ChatAdapter(private val context: Context) :
             }
         }
 
-        fun bind(item: ChatData, context: Context?) {
+        fun bind(item: Chat, context: Context?) {
             val option = MultiTransformation(CenterCrop(), RoundedCorners(8))
             Glide.with(context!!)
                 .load(item.content)
@@ -162,7 +162,7 @@ class ChatAdapter(private val context: Context) :
             }
         }
 
-        fun bind(item: ChatData, context: Context?) {
+        fun bind(item: Chat, context: Context?) {
             val option = MultiTransformation(CenterCrop(), RoundedCorners(8))
             Glide.with(context!!)
                 .load(item.content)
@@ -173,12 +173,12 @@ class ChatAdapter(private val context: Context) :
         }
     }
 
-    class MessageComparator : DiffUtil.ItemCallback<ChatData>() {
-        override fun areItemsTheSame(oldItem: ChatData, newItem: ChatData): Boolean {
+    class MessageComparator : DiffUtil.ItemCallback<Chat>() {
+        override fun areItemsTheSame(oldItem: Chat, newItem: Chat): Boolean {
             return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: ChatData, newItem: ChatData): Boolean {
+        override fun areContentsTheSame(oldItem: Chat, newItem: Chat): Boolean {
             return oldItem == newItem
         }
     }

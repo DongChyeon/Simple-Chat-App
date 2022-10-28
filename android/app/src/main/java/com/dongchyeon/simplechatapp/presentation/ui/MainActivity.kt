@@ -1,12 +1,12 @@
-package com.dongchyeon.simplechatapp.ui
+package com.dongchyeon.simplechatapp.presentation.ui
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import com.dongchyeon.simplechatapp.SimpleChatApp.Companion.roomName
-import com.dongchyeon.simplechatapp.SimpleChatApp.Companion.userName
 import com.dongchyeon.simplechatapp.databinding.ActivityMainBinding
+import com.dongchyeon.simplechatapp.presentation.SimpleChatApp.Companion.roomName
+import com.dongchyeon.simplechatapp.presentation.SimpleChatApp.Companion.userName
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
