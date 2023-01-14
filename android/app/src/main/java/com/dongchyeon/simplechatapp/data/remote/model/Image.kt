@@ -1,4 +1,4 @@
-package com.dongchyeon.simplechatapp.data.model
+package com.dongchyeon.simplechatapp.data.remote.model
 
 import com.google.gson.annotations.SerializedName
 

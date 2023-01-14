@@ -5,8 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.dongchyeon.simplechatapp.data.model.Chat
-import com.dongchyeon.simplechatapp.data.model.Room
+import com.dongchyeon.simplechatapp.data.socket.model.Chat
+import com.dongchyeon.simplechatapp.data.socket.model.Room
 import com.dongchyeon.simplechatapp.domain.UploadImageUseCase
 import com.dongchyeon.simplechatapp.presentation.SimpleChatApp.Companion.roomName
 import com.dongchyeon.simplechatapp.presentation.SimpleChatApp.Companion.socket

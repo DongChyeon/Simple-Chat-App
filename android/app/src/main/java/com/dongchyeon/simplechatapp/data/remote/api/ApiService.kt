@@ -1,6 +1,6 @@
-package com.dongchyeon.simplechatapp.data.api
+package com.dongchyeon.simplechatapp.data.remote.api
 
-import com.dongchyeon.simplechatapp.data.model.Image
+import com.dongchyeon.simplechatapp.data.remote.model.Image
 import okhttp3.MultipartBody
 import retrofit2.Response
 import retrofit2.http.Multipart

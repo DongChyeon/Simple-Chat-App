@@ -1,11 +1,9 @@
 package com.dongchyeon.simplechatapp.presentation.di
 
 import com.dongchyeon.simplechatapp.BuildConfig
-import com.dongchyeon.simplechatapp.data.api.ApiService
-import com.dongchyeon.simplechatapp.data.datasource.NetworkDataSource
-import com.dongchyeon.simplechatapp.data.datasource.NetworkDataSourceImpl
-import com.dongchyeon.simplechatapp.data.repository.NetworkRepository
-import com.dongchyeon.simplechatapp.data.repository.NetworkRepositoryImpl
+import com.dongchyeon.simplechatapp.data.remote.api.ApiService
+import com.dongchyeon.simplechatapp.data.remote.datasource.NetworkDataSource
+import com.dongchyeon.simplechatapp.data.remote.repository.NetworkRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -21,7 +19,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
-
     @Singleton
     @Provides
     fun providesOkHttpClient() = if (BuildConfig.DEBUG) {
@@ -60,12 +57,12 @@ object NetworkModule {
         apiService: ApiService,
         dispatcher: CoroutineDispatcher
     ): NetworkDataSource {
-        return NetworkDataSourceImpl(apiService, dispatcher)
+        return NetworkDataSource(apiService, dispatcher)
     }
 
     @Singleton
     @Provides
     fun providesNetworkRepository(networkDataSource: NetworkDataSource): NetworkRepository {
-        return NetworkRepositoryImpl(networkDataSource)
+        return NetworkRepository(networkDataSource)
     }
 }

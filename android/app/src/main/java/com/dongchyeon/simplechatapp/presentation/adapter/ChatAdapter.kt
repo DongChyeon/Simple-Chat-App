@@ -15,10 +15,8 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.dongchyeon.simplechatapp.R
-import com.dongchyeon.simplechatapp.data.model.Chat
+import com.dongchyeon.simplechatapp.data.socket.model.Chat
 import com.dongchyeon.simplechatapp.presentation.SimpleChatApp.Companion.userName
-import java.text.SimpleDateFormat
-import java.util.*
 
 class ChatAdapter(private val context: Context) :
     ListAdapter<Chat, RecyclerView.ViewHolder>(MessageComparator()) {
@@ -101,8 +99,7 @@ class ChatAdapter(private val context: Context) :
         fun bind(item: Chat) {
             nameText.text = item.from
             contentText.text = item.content
-            sendTimeText.text =
-                SimpleDateFormat("hh:mm a", Locale.KOREA).format(Date(item.sendTime))
+            sendTimeText.text = item.getFormattedTime(item.sendTime)
         }
     }
 
@@ -120,8 +117,7 @@ class ChatAdapter(private val context: Context) :
 
         fun bind(item: Chat) {
             contentText.text = item.content
-            sendTimeText.text =
-                SimpleDateFormat("hh:mm a", Locale.KOREA).format(Date(item.sendTime))
+            sendTimeText.text = item.getFormattedTime(item.sendTime)
         }
     }
 
@@ -145,8 +141,7 @@ class ChatAdapter(private val context: Context) :
                 .apply(RequestOptions.bitmapTransform(option))
                 .into(image)
             nameText.text = item.from
-            sendTimeText.text =
-                SimpleDateFormat("hh:mm a", Locale.KOREA).format(Date(item.sendTime))
+            sendTimeText.text = item.getFormattedTime(item.sendTime)
         }
     }
 
@@ -168,8 +163,7 @@ class ChatAdapter(private val context: Context) :
                 .load(item.content)
                 .apply(RequestOptions.bitmapTransform(option))
                 .into(image)
-            sendTimeText.text =
-                SimpleDateFormat("hh:mm a", Locale.KOREA).format(Date(item.sendTime))
+            sendTimeText.text = item.getFormattedTime(item.sendTime)
         }
     }
 

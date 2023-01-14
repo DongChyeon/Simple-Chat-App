@@ -1,21 +1,19 @@
-package com.dongchyeon.simplechatapp.data.datasource
+package com.dongchyeon.simplechatapp.data.remote.datasource
 
-import com.dongchyeon.simplechatapp.data.api.ApiService
-import com.dongchyeon.simplechatapp.data.model.Image
+import com.dongchyeon.simplechatapp.data.remote.api.ApiService
+import com.dongchyeon.simplechatapp.data.remote.model.Image
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import okhttp3.MultipartBody
 import retrofit2.Response
 import javax.inject.Inject
 
-class NetworkDataSourceImpl @Inject constructor(
+class NetworkDataSource @Inject constructor(
     private val apiService: ApiService,
     private val ioDispatcher: CoroutineDispatcher
-) : NetworkDataSource {
-
-    override suspend fun uploadImage(image: MultipartBody.Part): Response<Image> =
+) {
+    suspend fun uploadImage(image: MultipartBody.Part): Response<Image> =
         withContext(ioDispatcher) {
             return@withContext apiService.uploadImage(image)
         }
-
 }
