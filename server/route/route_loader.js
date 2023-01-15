@@ -13,7 +13,7 @@ function initRoutes(app, router) {
         const imageData = {
             imageUri: req.file.filename
         }
-        res.send(JSON.stringify(imageData))
+        res.json(imageData)
     })
 
     app.use('/', router)
