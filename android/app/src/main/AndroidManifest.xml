@@ -26,9 +26,12 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".ui.ChatActivity" />
+        <activity
+            android:name=".ui.ChatActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ui.MainActivity"
+            android:windowSoftInputMode="adjustResize"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

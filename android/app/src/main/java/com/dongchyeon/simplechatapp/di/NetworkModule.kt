@@ -1,12 +1,15 @@
 package com.dongchyeon.simplechatapp.di
 
 import com.dongchyeon.simplechatapp.BuildConfig
-import com.dongchyeon.simplechatapp.data.api.ImageUploadService
-import com.dongchyeon.simplechatapp.data.repository.NetworkRepository
+import com.dongchyeon.simplechatapp.data.remote.api.ApiService
+import com.dongchyeon.simplechatapp.data.remote.datasource.NetworkDataSource
+import com.dongchyeon.simplechatapp.data.remote.repository.NetworkRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -18,7 +21,7 @@ import javax.inject.Singleton
 object NetworkModule {
     @Singleton
     @Provides
-    fun provideOkHttpClient() = if (BuildConfig.DEBUG) {
+    fun providesOkHttpClient() = if (BuildConfig.DEBUG) {
         val loggingInterceptor = HttpLoggingInterceptor()
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
         OkHttpClient.Builder()
@@ -30,7 +33,7 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
+    fun providesRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .client(okHttpClient)
             .baseUrl(BuildConfig.BASE_URL)
@@ -38,14 +41,28 @@ object NetworkModule {
             .build()
     }
 
-    @Provides
     @Singleton
-    fun provideImageUploadService(retrofit: Retrofit): ImageUploadService {
-        return retrofit.create(ImageUploadService::class.java)
+    @Provides
+    fun providesApiService(retrofit: Retrofit): ApiService {
+        return retrofit.create(ApiService::class.java)
     }
 
-    @Provides
     @Singleton
-    fun provideNetworkRepository(imageUploadService: ImageUploadService) =
-        NetworkRepository(imageUploadService)
+    @Provides
+    fun providesIoDispatcher(): CoroutineDispatcher = Dispatchers.IO
+
+    @Singleton
+    @Provides
+    fun providesNetworkDataSource(
+        apiService: ApiService,
+        dispatcher: CoroutineDispatcher
+    ): NetworkDataSource {
+        return NetworkDataSource(apiService, dispatcher)
+    }
+
+    @Singleton
+    @Provides
+    fun providesNetworkRepository(networkDataSource: NetworkDataSource): NetworkRepository {
+        return NetworkRepository(networkDataSource)
+    }
 }
