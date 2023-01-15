@@ -2,9 +2,9 @@ package com.dongchyeon.simplechatapp.data.socket.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.dongchyeon.simplechatapp.SimpleChatApp
 import com.dongchyeon.simplechatapp.data.socket.datasource.AppSocket
 import com.dongchyeon.simplechatapp.data.socket.model.Chat
-import com.dongchyeon.simplechatapp.presentation.SimpleChatApp
 import com.google.gson.Gson
 import io.socket.emitter.Emitter
 

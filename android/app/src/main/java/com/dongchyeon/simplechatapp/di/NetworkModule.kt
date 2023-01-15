@@ -1,4 +1,4 @@
-package com.dongchyeon.simplechatapp.presentation.di
+package com.dongchyeon.simplechatapp.di
 
 import com.dongchyeon.simplechatapp.BuildConfig
 import com.dongchyeon.simplechatapp.data.remote.api.ApiService

@@ -1,4 +1,4 @@
-package com.dongchyeon.simplechatapp.presentation.util
+package com.dongchyeon.simplechatapp.util
 
 import android.annotation.SuppressLint
 import android.content.ContentUris

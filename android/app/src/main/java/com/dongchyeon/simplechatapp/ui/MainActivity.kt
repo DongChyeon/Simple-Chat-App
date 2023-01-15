@@ -1,4 +1,4 @@
-package com.dongchyeon.simplechatapp.presentation.ui
+package com.dongchyeon.simplechatapp.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,9 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
@@ -17,8 +15,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.dongchyeon.simplechatapp.presentation.SimpleChatApp.Companion.roomName
-import com.dongchyeon.simplechatapp.presentation.SimpleChatApp.Companion.userName
+import com.dongchyeon.simplechatapp.SimpleChatApp.Companion.roomName
+import com.dongchyeon.simplechatapp.SimpleChatApp.Companion.userName
 import com.dongchyeon.simplechatapp.ui.theme.Black
 import com.dongchyeon.simplechatapp.ui.theme.SimpleChatAppTheme
 import com.dongchyeon.simplechatapp.ui.theme.White
@@ -69,12 +67,12 @@ class MainActivity : AppCompatActivity() {
                             .height(32.dp)
                     )
 
-                    val username = remember { mutableStateOf("") }
-                    val roomname = remember { mutableStateOf("") }
+                    var username by remember { mutableStateOf("") }
+                    var roomname by remember { mutableStateOf("") }
 
                     TextField(
-                        value = username.value,
-                        onValueChange = { username.value = it },
+                        value = username,
+                        onValueChange = { username = it },
                         colors = TextFieldDefaults.textFieldColors(
                             backgroundColor = MaterialTheme.colors.surface,
                             cursorColor = Black,
@@ -88,8 +86,8 @@ class MainActivity : AppCompatActivity() {
                             .wrapContentHeight()
                     )
                     TextField(
-                        value = roomname.value,
-                        onValueChange = { roomname.value = it },
+                        value = roomname,
+                        onValueChange = { roomname = it },
                         colors = TextFieldDefaults.textFieldColors(
                             backgroundColor = MaterialTheme.colors.surface,
                             cursorColor = Black,
@@ -111,11 +109,14 @@ class MainActivity : AppCompatActivity() {
                     Button(
                         onClick = {
                             val intent = Intent(applicationContext, ChatActivity::class.java)
-                            userName = username.value
-                            roomName = roomname.value
+                            userName = username
+                            roomName = roomname
                             startActivity(intent)
                         },
                         colors = ButtonDefaults.buttonColors(backgroundColor = Black),
+                        elevation = ButtonDefaults.elevation(
+                            defaultElevation = 0.dp
+                        ),
                         modifier = modifier
                             .width(296.dp)
                             .wrapContentHeight()
