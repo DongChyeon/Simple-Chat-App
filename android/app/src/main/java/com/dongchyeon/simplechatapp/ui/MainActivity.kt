@@ -17,9 +17,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.dongchyeon.simplechatapp.SimpleChatApp.Companion.roomName
 import com.dongchyeon.simplechatapp.SimpleChatApp.Companion.userName
+import com.dongchyeon.simplechatapp.ui.component.ButtonWithNoElevation
 import com.dongchyeon.simplechatapp.ui.theme.Black
 import com.dongchyeon.simplechatapp.ui.theme.SimpleChatAppTheme
-import com.dongchyeon.simplechatapp.ui.theme.White
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -58,7 +58,6 @@ class MainActivity : AppCompatActivity() {
                         fontWeight = FontWeight.Bold,
                         textAlign = TextAlign.Center,
                         modifier = modifier
-                            .wrapContentHeight()
                             .fillMaxWidth()
                     )
 
@@ -83,7 +82,6 @@ class MainActivity : AppCompatActivity() {
                         },
                         modifier = modifier
                             .width(296.dp)
-                            .wrapContentHeight()
                     )
                     TextField(
                         value = roomname,
@@ -98,7 +96,6 @@ class MainActivity : AppCompatActivity() {
                         },
                         modifier = modifier
                             .width(296.dp)
-                            .wrapContentHeight()
                     )
 
                     Spacer(
@@ -106,31 +103,12 @@ class MainActivity : AppCompatActivity() {
                             .height(32.dp)
                     )
 
-                    Button(
-                        onClick = {
-                            val intent = Intent(applicationContext, ChatActivity::class.java)
-                            userName = username
-                            roomName = roomname
-                            startActivity(intent)
-                        },
-                        colors = ButtonDefaults.buttonColors(backgroundColor = Black),
-                        elevation = ButtonDefaults.elevation(
-                            defaultElevation = 0.dp
-                        ),
-                        modifier = modifier
-                            .width(296.dp)
-                            .wrapContentHeight()
-                    ) {
-                        Text(
-                            "입장하기",
-                            color = White,
-                            fontSize = 18.sp,
-                            fontWeight = FontWeight.Normal,
-                            textAlign = TextAlign.Center,
-                            modifier = modifier
-                                .wrapContentHeight()
-                        )
-                    }
+                    ButtonWithNoElevation("입장하기", 18, {
+                        val intent = Intent(applicationContext, ChatActivity::class.java)
+                        userName = username
+                        roomName = roomname
+                        startActivity(intent)
+                    }, Modifier.width(296.dp))
                 }
             }
         }
