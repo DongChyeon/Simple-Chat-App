@@ -1,7 +1,7 @@
-package com.dongchyeon.simplechatapp.data.remote.datasource
+package com.dongchyeon.simplechatapp.data.datasource
 
-import com.dongchyeon.simplechatapp.data.remote.api.ApiService
-import com.dongchyeon.simplechatapp.data.remote.model.Image
+import com.dongchyeon.simplechatapp.data.api.ApiService
+import com.dongchyeon.simplechatapp.data.model.Image
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import okhttp3.MultipartBody

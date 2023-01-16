@@ -1,9 +1,9 @@
 package com.dongchyeon.simplechatapp.di
 
 import com.dongchyeon.simplechatapp.BuildConfig
-import com.dongchyeon.simplechatapp.data.remote.api.ApiService
-import com.dongchyeon.simplechatapp.data.remote.datasource.NetworkDataSource
-import com.dongchyeon.simplechatapp.data.remote.repository.NetworkRepository
+import com.dongchyeon.simplechatapp.data.api.ApiService
+import com.dongchyeon.simplechatapp.data.datasource.NetworkDataSource
+import com.dongchyeon.simplechatapp.data.repository.NetworkRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

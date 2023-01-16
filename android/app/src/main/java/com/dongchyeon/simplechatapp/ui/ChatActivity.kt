@@ -16,7 +16,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.dongchyeon.simplechatapp.R
-import com.dongchyeon.simplechatapp.data.socket.model.Chat
+import com.dongchyeon.simplechatapp.data.model.Chat
 import com.dongchyeon.simplechatapp.ui.component.*
 import com.dongchyeon.simplechatapp.ui.theme.SimpleChatAppTheme
 import com.dongchyeon.simplechatapp.ui.viewmodel.ChatViewModel

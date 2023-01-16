@@ -1,4 +1,4 @@
-package com.dongchyeon.simplechatapp.data.socket.model
+package com.dongchyeon.simplechatapp.data.model
 
 import java.text.SimpleDateFormat
 import java.util.*

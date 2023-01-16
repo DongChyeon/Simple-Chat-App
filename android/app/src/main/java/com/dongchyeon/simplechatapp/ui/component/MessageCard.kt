@@ -12,7 +12,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.dongchyeon.simplechatapp.data.socket.model.Chat
+import com.dongchyeon.simplechatapp.data.model.Chat
 import com.dongchyeon.simplechatapp.ui.theme.Black
 import com.dongchyeon.simplechatapp.ui.theme.DarkGray
 import com.dongchyeon.simplechatapp.ui.theme.Gray

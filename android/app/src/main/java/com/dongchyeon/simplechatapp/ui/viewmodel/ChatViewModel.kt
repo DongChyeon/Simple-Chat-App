@@ -8,9 +8,9 @@ import androidx.lifecycle.viewModelScope
 import com.dongchyeon.simplechatapp.SimpleChatApp.Companion.roomName
 import com.dongchyeon.simplechatapp.SimpleChatApp.Companion.socket
 import com.dongchyeon.simplechatapp.SimpleChatApp.Companion.userName
-import com.dongchyeon.simplechatapp.data.remote.repository.NetworkRepository
-import com.dongchyeon.simplechatapp.data.socket.model.Chat
-import com.dongchyeon.simplechatapp.data.socket.model.Room
+import com.dongchyeon.simplechatapp.data.model.Chat
+import com.dongchyeon.simplechatapp.data.model.Room
+import com.dongchyeon.simplechatapp.data.repository.NetworkRepository
 import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.socket.emitter.Emitter

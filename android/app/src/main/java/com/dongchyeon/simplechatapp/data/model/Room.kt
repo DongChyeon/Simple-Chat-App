@@ -1,4 +1,4 @@
-package com.dongchyeon.simplechatapp.data.socket.model
+package com.dongchyeon.simplechatapp.data.model
 
 data class Room(
     val userName: String,

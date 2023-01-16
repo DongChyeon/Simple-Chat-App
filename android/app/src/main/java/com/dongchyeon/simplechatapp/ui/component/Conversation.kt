@@ -7,7 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import com.dongchyeon.simplechatapp.SimpleChatApp
-import com.dongchyeon.simplechatapp.data.socket.model.Chat
+import com.dongchyeon.simplechatapp.data.model.Chat
 import kotlinx.coroutines.launch
 
 @Composable
